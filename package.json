@@ -1,0 +1,29 @@
+{
+  "name": "fcc-image-search-abstraction-layer",
+  "version": "1.0.0",
+  "description": "This project is a part of Back End Development Certification - Api project on FreeCodeCamp",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shkabo/fcc-image-search-abstraction-layer.git"
+  },
+  "keywords": [
+    "FreeCodeCamp",
+    "Image",
+    "Search",
+    "Abstraction",
+    "Layer"
+  ],
+  "author": "Bosko Stupar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shkabo/fcc-image-search-abstraction-layer/issues"
+  },
+  "homepage": "https://github.com/shkabo/fcc-image-search-abstraction-layer#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
