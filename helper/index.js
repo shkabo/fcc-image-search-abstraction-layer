@@ -1,5 +1,6 @@
 
 module.exports = {
+  // builds query string
    buildUrl(params) {
     let url = '';
     for(let i = 0; i < params.length; i++) {
@@ -8,6 +9,7 @@ module.exports = {
     return url;
   },
 
+  // build new json object array
   parseUrl(data) {
     let result = [];
     let items = data.items;

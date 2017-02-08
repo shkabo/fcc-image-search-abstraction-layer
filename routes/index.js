@@ -21,11 +21,9 @@ const api_search_type = 'searchType=image';
 const api_key = 'key=' + config.gkey;
 const api_cx = 'cx=' + config.gcx;
 
-const tmp_data = require('../tests/data.js');
+const tmp_data = require('../tmp/data.js');
 
-/**
- * display latest search images
- */
+// for testing purpose
 router.get('/', (req, res) => {
   res.send(tmp_data.data);
 });

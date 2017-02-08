@@ -1,3 +1,4 @@
 node_modules/
 forever/
 watch.sh
+tmp/
