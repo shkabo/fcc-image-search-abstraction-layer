@@ -3,6 +3,8 @@ const router = express.Router();
 const config = require('../config/config.js');
 const helper = require('../helper');
 const request = require('request');
+const mongo = require("mongodb").MongoClient;
+
 
 /**
  * api_endpoint - api endpoint url
@@ -33,6 +35,16 @@ router.get('/imagesearch/:query', (req, res) => {
   let query = api_query + encodeURI(req.params.query);
   let offset = api_offset + 1;
 
+  // store search term in db
+  mongo.connect(config.mongo, (err, db) => {
+    if (err) throw console.error(err);
+
+    let collection = db.collection("imgsearch");
+    let date = new Date();
+    collection.insert({ term: req.params.query, when: date.toISOString()});
+    db.close();
+  });
+
   if (req.query.offset) {
     offset = api_offset + req.query.offset;
   }
@@ -48,9 +60,27 @@ router.get('/imagesearch/:query', (req, res) => {
   });
 });
 
-router.get('/latest/imagesearch/:query', (req, res) => {
+router.get('/latest/imagesearch/', (req, res) => {
   //return latest search results
-  res.send(req.params.query);
+  mongo.connect(config.mongo, (err, db) => {
+    if (err) throw console.error(err);
+
+    // get last 10 search records from db and display it i json
+    db.collection('imgsearch')
+    .find(
+      {},
+      {_id:0, term: 1, when: 1}
+    ).sort({_id: -1})
+    .limit(10)
+    .toArray((err, doc) => {
+      if (err) throw console.error(err);
+      res.status(200).send(doc);
+      
+      db.close();
+      return;
+    });
+    
+  });
 });
 
 module.exports = router;

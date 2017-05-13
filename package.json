@@ -25,6 +25,10 @@
   "homepage": "https://github.com/shkabo/fcc-image-search-abstraction-layer#readme",
   "dependencies": {
     "express": "^4.14.0",
+    "mongodb": "^2.2.26",
     "request": "^2.79.0"
+  },
+  "devDependencies": {
+    "supertest": "^3.0.0"
   }
 }
