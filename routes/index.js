@@ -23,11 +23,9 @@ const api_search_type = 'searchType=image';
 const api_key = 'key=' + config.gkey;
 const api_cx = 'cx=' + config.gcx;
 
-const tmp_data = require('../tmp/data.js');
-
 // for testing purpose
 router.get('/', (req, res) => {
-  res.send(tmp_data.data);
+  res.send("Welcome");
 });
 
 router.get('/imagesearch/:query', (req, res) => {
